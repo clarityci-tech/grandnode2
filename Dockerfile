@@ -38,7 +38,7 @@ RUN dotnet publish /app/Web/Grand.Web --no-restore -c Release -o ./build/release
 RUN ls
 
 # copy installed plugins cfg file
-COPY InstalledPlugins.cfg /app/build/release/App_Data
+#COPY InstalledPlugins.cfg /app/build/release/App_Data
 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
@@ -46,4 +46,5 @@ EXPOSE 80
 ENV ASPNETCORE_URLS http://+:80
 WORKDIR /app
 COPY --from=build-env /app/build/release .
+COPY --from=build-env /app/InstalledPlugins.cfg /app/build/release/App_Data/InstalledPlugins.cfg
 ENTRYPOINT ["dotnet", "Grand.Web.dll"]
