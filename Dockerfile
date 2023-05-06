@@ -38,7 +38,7 @@ RUN dotnet publish /app/Web/Grand.Web --no-restore -c Release -o ./build/release
 RUN ls
 
 # copy installed plugins cfg file
-COPY InstalledPlugins.cfg /app/build/release/App_Data/InstalledPlugins.cfg
+COPY InstalledPlugins.cfg /app/build/release/App_Data
 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
