@@ -35,7 +35,7 @@ RUN dotnet build /app/Web/Grand.Web/Grand.Web.csproj --no-restore -c Release -p:
 RUN dotnet publish /app/Web/Grand.Web --no-restore -c Release -o ./build/release -p:SourceRevisionId=$GIT_COMMIT -p:GitBranch=$GIT_BRANCH
 
 # copy installed plugins cfg file
-COPY /app/Plugins/InstalledPlugins.cfg /app/build/release/App_Data/InstalledPlugins.cfg
+COPY Plugins/InstalledPlugins.cfg /app/build/release/App_Data/InstalledPlugins.cfg
 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
