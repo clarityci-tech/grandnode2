@@ -42,5 +42,5 @@ EXPOSE 80
 ENV ASPNETCORE_URLS http://+:80
 WORKDIR /app
 COPY --from=build-env /app/build/release .
-COPY --from=build-env /app/Plugins/InstalledPlugins.cfg /App_Data/InstalledPlugins.cfg
+COPY --from=build-env /app/Plugins/InstalledPlugins.cfg ./App_Data/InstalledPlugins.cfg
 ENTRYPOINT ["dotnet", "Grand.Web.dll"]
